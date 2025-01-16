@@ -40,45 +40,41 @@ console.log(" <========== Fizz Buzz ==========> ");
 
 console.log(" <========== Prime Time ==========> ")
 
+let n = 50; // Starting number
+let nextPrime = n + 1; // Start checking from next number
 
-//* Function to check if a number is prime
-function isPrime(num) {
-     console.log("Checking if", num, "is prime...");
-     
-     if (num <= 1) return false; // numbers less than or equal to 1 are not prime numbers
-     console.log(num, "is not prime (<= 1).");
-     
-     let i = 2; // checking divisors from 2
-     while (i < num) { // loops until "i" reaches "num"
-          console.log("Checking if", num, "is divisible by", i);
-          
-          if (num % i === 0) {
-               console.log(num, "is divisible by", i, "so it is not prime.");
-               
-               return false; // if divisible, then its not a prime number
-          }
-          i++; // increment divisor
-     }
-     console.log(num, "is prime!");
-     
-     return true; // if none found, it's prime
+console.log("Let n =", n); // Log the starting number
+
+// Loop until we find a prime number
+while (true) {
+  console.log("Checking:", nextPrime);
+
+  let isPrime = true; // Assume the number is prime
+  let divisor = 2;
+
+  // Check if divisible by any number from 2 to nextPrime - 1
+  while (divisor < nextPrime) {
+
+    if (nextPrime % divisor === 0) {
+      console.log("  ", nextPrime, "is divisible by", divisor, "- Not a prime.");
+      isPrime = false; // It's not a prime number
+      break; // Exit the divisor loop
+    }
+
+    divisor++; // Move to the next divisor
+  }
+
+  // If the number is prime, log it and exit the loop
+  if (isPrime) {
+    console.log(nextPrime, "is a prime number!");
+    break; // Exit the main while loop
+  }
+
+  // If not prime, move to the next number
+  console.log(nextPrime, "is not prime. Checking the next number...");
+  nextPrime++;
 }
 
-//* Find the next prime number using a while loop
-// Arbitrary number n
-let n = 25;
-console.log("let n =", n);
-
-let nextPrime = n + 1; // start checking from next number
-console.log("Starting from:", nextPrime);
-
-while (!isPrime(nextPrime)) { // keeps going until it finds prime
-     console.log(nextPrime, "is not prime, checking next number...");
-     
-     nextPrime++; // next number
-}
-
-console.log("The next prime number is: ", nextPrime); // log result
 
 console.log(" <=========== Feeling Loopy ==========> ");
 
